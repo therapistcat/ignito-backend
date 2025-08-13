@@ -1,19 +1,15 @@
 /**
  * Navigation Bar Component
  * Responsive navigation with hamburger menu for mobile devices
- * Bookstore-themed design with warm colors
+ * Enhanced bookstore-themed design with vibrant colors
  */
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
 
   // Helper function to check if current route is active
   const isActive = (path) => {
@@ -30,14 +26,6 @@ const Navbar = () => {
 
   // Close menu when link is clicked
   const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  // Handle logout
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-    setShowUserMenu(false);
     setIsMenuOpen(false);
   };
 
@@ -112,45 +100,8 @@ const Navbar = () => {
 
         </div>
 
-        {/* User Menu */}
-        <div className="nav-user">
-          <div className="user-menu-wrapper">
-            <button
-              className="user-avatar"
-              onClick={() => setShowUserMenu(!showUserMenu)}
-              aria-label="User menu"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-              </svg>
-              <span className="user-name">{user?.name || 'User'}</span>
-              <svg className="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7 10l5 5 5-5z"/>
-              </svg>
-            </button>
-
-            {/* User Dropdown Menu */}
-            {showUserMenu && (
-              <div className="user-dropdown">
-                <div className="user-info">
-                  <p className="user-email">{user?.email}</p>
-                  <p className="user-role">Manager</p>
-                </div>
-                <hr />
-                <button className="dropdown-item" onClick={handleLogout}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.59L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
-                  </svg>
-                  Sign Out
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-
         {/* Mobile Menu Overlay */}
         {isMenuOpen && <div className="nav-overlay" onClick={closeMenu}></div>}
-        {showUserMenu && <div className="user-menu-overlay" onClick={() => setShowUserMenu(false)}></div>}
       </div>
     </nav>
   );

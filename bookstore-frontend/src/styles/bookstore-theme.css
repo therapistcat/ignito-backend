@@ -1,49 +1,73 @@
 /**
- * Old Town Books - Bookstore Theme
- * Warm, vintage-inspired design with traditional bookstore aesthetics
+ * Old Town Books - Enhanced Bookstore Theme
+ * Vibrant vintage-inspired design with jewel tones and improved aesthetics
  */
 
 /* Import Google Fonts - Literary and classic typography */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-/* Color Palette - Warm Bookstore Colors */
+/* Enhanced Color Palette - Vibrant Bookstore Colors with Jewel Tones */
 :root {
-  /* Primary Colors - Warm Browns and Creams */
+  /* Primary Colors - Rich Browns and Warm Bases */
   --primary-brown: #8B4513;
-  --dark-brown: #654321;
+  --dark-brown: #5D2F0A;
+  --rich-brown: #A0522D;
   --light-brown: #D2B48C;
   --cream: #F5F5DC;
   --warm-white: #FFF8DC;
   --parchment: #F0E68C;
-  
-  /* Accent Colors - Deep Reds and Golds */
-  --burgundy: #800020;
-  --deep-red: #A0522D;
-  --gold: #DAA520;
+
+  /* Jewel Tone Accents - Vibrant and Rich */
+  --deep-emerald: #2E8B57;
+  --forest-green: #228B22;
+  --rich-burgundy: #800020;
+  --wine-red: #722F37;
+  --warm-amber: #FFBF00;
+  --golden-amber: #DAA520;
   --antique-gold: #B8860B;
-  
-  /* Neutral Colors */
-  --charcoal: #36454F;
+  --copper: #B87333;
+
+  /* Enhanced Accent Colors */
+  --royal-purple: #663399;
+  --deep-teal: #008B8B;
+  --burnt-orange: #CC5500;
+  --mahogany: #C04000;
+
+  /* Neutral Colors - Improved Contrast */
+  --charcoal: #2F2F2F;
+  --slate-gray: #708090;
   --warm-gray: #8B8680;
   --light-gray: #D3D3D3;
   --off-white: #FAF0E6;
-  
-  /* Status Colors - Muted and Warm */
-  --success: #228B22;
+  --pearl: #F8F6F0;
+
+  /* Status Colors - Vibrant and Clear */
+  --success: #2E8B57;
   --warning: #FF8C00;
-  --error: #CD5C5C;
+  --error: #DC143C;
   --info: #4682B4;
-  
-  /* Shadows and Effects */
-  --shadow-light: 0 2px 8px rgba(139, 69, 19, 0.1);
-  --shadow-medium: 0 4px 16px rgba(139, 69, 19, 0.15);
-  --shadow-heavy: 0 8px 32px rgba(139, 69, 19, 0.2);
-  --text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  
-  /* Typography */
+
+  /* Enhanced Shadows and Effects */
+  --shadow-light: 0 2px 12px rgba(47, 47, 47, 0.08);
+  --shadow-medium: 0 4px 20px rgba(47, 47, 47, 0.12);
+  --shadow-heavy: 0 8px 40px rgba(47, 47, 47, 0.16);
+  --shadow-colored: 0 4px 20px rgba(46, 139, 87, 0.15);
+  --shadow-warm: 0 4px 20px rgba(184, 115, 51, 0.15);
+  --text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  --text-shadow-light: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  /* Enhanced Typography */
   --font-serif: 'Crimson Text', 'Times New Roman', serif;
   --font-display: 'Libre Baskerville', 'Georgia', serif;
+  --font-decorative: 'Playfair Display', 'Georgia', serif;
   --font-sans: 'Source Sans Pro', 'Arial', sans-serif;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--rich-brown) 0%, var(--dark-brown) 100%);
+  --gradient-emerald: linear-gradient(135deg, var(--deep-emerald) 0%, var(--forest-green) 100%);
+  --gradient-burgundy: linear-gradient(135deg, var(--rich-burgundy) 0%, var(--wine-red) 100%);
+  --gradient-amber: linear-gradient(135deg, var(--warm-amber) 0%, var(--golden-amber) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 50%, var(--pearl) 100%);
 }
 
 /* Reset and Base Styles */
@@ -55,7 +79,7 @@
 
 body {
   font-family: var(--font-sans);
-  background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 50%, var(--off-white) 100%);
+  background: var(--gradient-warm);
   background-attachment: fixed;
   color: var(--charcoal);
   line-height: 1.6;
@@ -63,7 +87,7 @@ body {
   position: relative;
 }
 
-/* Add subtle paper texture overlay */
+/* Enhanced paper texture overlay with subtle patterns */
 body::before {
   content: '';
   position: fixed;
@@ -71,9 +95,24 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 1px 1px, rgba(139, 69, 19, 0.05) 1px, transparent 0);
-  background-size: 20px 20px;
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(46, 139, 87, 0.03) 1px, transparent 0),
+    radial-gradient(circle at 8px 8px, rgba(184, 115, 51, 0.02) 1px, transparent 0);
+  background-size: 24px 24px, 48px 48px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Additional decorative overlay for depth */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(45deg, transparent 40%, rgba(218, 165, 32, 0.01) 50%, transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -97,12 +136,26 @@ body::before {
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
-  background: rgba(255, 248, 220, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px 20px 0 0;
+  background: rgba(248, 246, 240, 0.98);
+  backdrop-filter: blur(15px);
+  border-radius: 25px 25px 0 0;
   box-shadow: var(--shadow-heavy);
   min-height: calc(100vh - 80px);
-  border: 1px solid rgba(139, 69, 19, 0.1);
+  border: 2px solid rgba(46, 139, 87, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle inner glow to main content */
+.main-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-emerald);
+  opacity: 0.7;
 }
 
 /* Typography Enhancements */
@@ -135,16 +188,39 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Navigation Bar - Bookstore Theme */
+/* Enhanced Navigation Bar - Vibrant Bookstore Theme */
 .navbar {
-  background: linear-gradient(135deg, var(--dark-brown) 0%, var(--primary-brown) 100%);
-  border-bottom: 3px solid var(--gold);
+  background: var(--gradient-primary);
+  border-bottom: 4px solid var(--deep-emerald);
   color: var(--warm-white);
-  padding: 1rem 0;
+  padding: 1.25rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add decorative accent to navbar */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-amber);
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--golden-amber), transparent);
 }
 
 .nav-container {
@@ -155,6 +231,7 @@ p {
   align-items: center;
   padding: 0 2rem;
   position: relative;
+  z-index: 1;
 }
 
 /* Brand Styling */
@@ -185,16 +262,19 @@ p {
 }
 
 .brand-main {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--warm-amber);
+  font-family: var(--font-decorative);
+  text-shadow: var(--text-shadow);
 }
 
 .brand-sub {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--light-brown);
   font-style: italic;
+  opacity: 0.9;
 }
 
 /* Hamburger Menu */
@@ -269,11 +349,11 @@ p {
 
 .nav-link:hover,
 .nav-link.active {
-  background: rgba(218, 165, 32, 0.2);
-  border-color: var(--gold);
+  background: rgba(46, 139, 87, 0.25);
+  border-color: var(--deep-emerald);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
-  color: var(--gold);
+  box-shadow: var(--shadow-colored);
+  color: var(--warm-amber);
 }
 
 .nav-link svg {
@@ -763,25 +843,34 @@ p {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
+  background: var(--gradient-emerald);
   color: var(--warm-white);
-  border: 2px solid transparent;
+  border: 2px solid var(--deep-emerald);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
-  background: linear-gradient(135deg, var(--dark-brown) 0%, var(--primary-brown) 100%);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-colored);
+  background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-emerald) 100%);
+  border-color: var(--forest-green);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, var(--warm-gray) 0%, var(--charcoal) 100%);
+  background: var(--gradient-burgundy);
   color: var(--warm-white);
+  border: 2px solid var(--rich-burgundy);
 }
 
 .btn-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(128, 0, 32, 0.3);
+  background: linear-gradient(135deg, var(--wine-red) 0%, var(--rich-burgundy) 100%);
 }
 
 .btn-info {
@@ -800,8 +889,48 @@ p {
 }
 
 .btn-danger:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(220, 20, 60, 0.4);
+}
+
+/* New Jewel Tone Button Variants */
+.btn-amber {
+  background: var(--gradient-amber);
+  color: var(--dark-brown);
+  border: 2px solid var(--golden-amber);
+  font-weight: 600;
+}
+
+.btn-amber:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-warm);
+  background: linear-gradient(135deg, var(--golden-amber) 0%, var(--antique-gold) 100%);
+  color: var(--charcoal);
+}
+
+.btn-emerald {
+  background: var(--gradient-emerald);
+  color: var(--warm-white);
+  border: 2px solid var(--deep-emerald);
+}
+
+.btn-emerald:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-colored);
+  background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-emerald) 100%);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--deep-emerald);
+  border: 2px solid var(--deep-emerald);
+}
+
+.btn-outline:hover {
+  background: var(--deep-emerald);
+  color: var(--warm-white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(205, 92, 92, 0.4);
+  box-shadow: var(--shadow-colored);
 }
 
 .btn-sm {
@@ -815,20 +944,20 @@ p {
   transform: none;
 }
 
-/* Page Headers */
+/* Enhanced Page Headers */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
-  padding: 2.5rem;
-  background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
-  border-radius: 20px;
+  padding: 3rem;
+  background: var(--gradient-primary);
+  border-radius: 25px;
   color: var(--warm-white);
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-heavy);
-  border: 3px solid var(--gold);
+  border: 3px solid var(--deep-emerald);
 }
 
 .page-header::before {
@@ -837,19 +966,31 @@ p {
   top: 0;
   left: 0;
   right: 0;
+  height: 4px;
+  background: var(--gradient-amber);
+  opacity: 0.9;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="bookPattern" width="50" height="50" patternUnits="userSpaceOnUse"><rect width="50" height="50" fill="none"/><path d="M10,10 L40,10 L40,40 L10,40 Z" fill="none" stroke="rgba(218,165,32,0.1)" stroke-width="1"/><circle cx="25" cy="25" r="2" fill="rgba(218,165,32,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23bookPattern)"/></svg>');
-  opacity: 0.3;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="bookPattern" width="60" height="60" patternUnits="userSpaceOnUse"><rect width="60" height="60" fill="none"/><path d="M15,15 L45,15 L45,45 L15,45 Z" fill="none" stroke="rgba(255,191,0,0.08)" stroke-width="1.5"/><circle cx="30" cy="30" r="2" fill="rgba(46,139,87,0.06)"/></pattern></defs><rect width="100" height="100" fill="url(%23bookPattern)"/></svg>');
+  opacity: 0.4;
 }
 
 .page-header h1 {
-  font-family: var(--font-display);
-  color: var(--gold);
-  font-size: 2.5rem;
+  font-family: var(--font-decorative);
+  color: var(--warm-amber);
+  font-size: 2.8rem;
   font-weight: 700;
   position: relative;
   z-index: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.5px;
 }
 
 .page-header .btn {
@@ -870,19 +1011,20 @@ p {
   font-family: var(--font-serif);
 }
 
-/* Cards - Bookstore Theme */
+/* Enhanced Cards - Vibrant Bookstore Theme */
 .book-card,
 .author-card,
 .order-card,
 .stat-card {
-  background: var(--warm-white);
-  border-radius: 15px;
+  background: var(--pearl);
+  border-radius: 20px;
   box-shadow: var(--shadow-medium);
-  padding: 2rem;
-  transition: all 0.3s ease;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  border: 2px solid var(--light-brown);
+  border: 2px solid var(--deep-emerald);
+  border-opacity: 0.2;
 }
 
 .book-card::before,
@@ -894,17 +1036,34 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold) 0%, var(--antique-gold) 100%);
+  height: 5px;
+  background: var(--gradient-emerald);
+  opacity: 0.8;
+}
+
+/* Add subtle inner shadow for depth */
+.book-card::after,
+.author-card::after,
+.order-card::after,
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--warm-amber), transparent);
+  opacity: 0.6;
 }
 
 .book-card:hover,
 .author-card:hover,
 .order-card:hover,
 .stat-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-12px) scale(1.02);
   box-shadow: var(--shadow-heavy);
-  border-color: var(--gold);
+  border-color: var(--deep-emerald);
+  background: var(--warm-white);
 }
 
 /* Book Cards */
@@ -931,14 +1090,33 @@ p {
 }
 
 .book-genre {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--antique-gold) 100%);
+  background: var(--gradient-amber);
   color: var(--dark-brown);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  box-shadow: 0 2px 8px rgba(255, 191, 0, 0.3);
+  border: 1px solid var(--golden-amber);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-genre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.book-genre:hover::before {
+  left: 100%;
 }
 
 .book-info p {
@@ -1101,15 +1279,18 @@ p {
   font-style: italic;
 }
 
-/* Status Badges */
+/* Enhanced Status Badges */
 .status-badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   font-family: var(--font-sans);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
 .status-pending {
@@ -1119,9 +1300,10 @@ p {
 }
 
 .status-confirmed {
-  background: rgba(34, 139, 34, 0.2);
-  color: var(--success);
-  border: 1px solid var(--success);
+  background: linear-gradient(135deg, rgba(46, 139, 87, 0.2), rgba(34, 139, 34, 0.3));
+  color: var(--deep-emerald);
+  border: 2px solid var(--deep-emerald);
+  box-shadow: 0 2px 12px rgba(46, 139, 87, 0.2);
 }
 
 .status-processing {
