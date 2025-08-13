@@ -1,4 +1,4 @@
-# 📚 Bookstore Management API
+ Bookstore Management API
 
 A RESTful backend API for managing a bookstore system built with Node.js, Express, and MongoDB. This project demonstrates clean API design, proper database relationships, and comprehensive CRUD operations.
 
