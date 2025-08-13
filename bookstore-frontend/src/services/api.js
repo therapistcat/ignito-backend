@@ -14,21 +14,18 @@
  */
 
 import axios from 'axios'; // Library for making HTTP requests
-
-// Base API URL - this is where our backend server is running
-const API_BASE_URL = 'http://localhost:3000/api';
-console.log('API Base URL:', API_BASE_URL); // Debug log
+import { API_BASE_URL, API_TIMEOUT, ENVIRONMENT } from '../config/api.js'; // Import API configuration
 
 // Create axios instance with default settings
 const api = axios.create({
-  baseURL: API_BASE_URL, // Base URL for all requests
+  baseURL: API_BASE_URL, // Base URL for all requests (from config)
   headers: {
     'Content-Type': 'application/json', // Tell server we're sending JSON
   },
-  timeout: 10000, // Wait max 10 seconds for response
+  timeout: API_TIMEOUT, // Timeout from config (environment-specific)
 });
 
-console.log('API instance created'); // Debug log
+console.log(`🚀 API instance created for ${ENVIRONMENT} environment`); // Debug log
 
 // Request interceptor for logging - helps us debug API calls
 api.interceptors.request.use(

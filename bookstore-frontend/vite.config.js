@@ -13,4 +13,21 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: 'dist',
+    sourcemap: false, // Disable source maps for production
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          http: ['axios']
+        }
+      }
+    }
+  },
+  preview: {
+    port: 3001,
+    host: true
+  }
 })

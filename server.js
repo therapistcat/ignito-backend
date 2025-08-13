@@ -34,8 +34,33 @@ const PORT = process.env.PORT || 3000;
  * These middlewares run for every request to our API
  */
 
-// Enable CORS for all routes (allows frontend to connect)
-app.use(cors());
+// CORS configuration for production and development
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+
+    // List of allowed origins
+    const allowedOrigins = [
+      'http://localhost:3001',                              // Local development frontend
+      'https://bookstore-management-xz4a.onrender.com',    // Production frontend
+      'http://localhost:3000',                              // Local development (same origin)
+    ];
+
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      console.log('✅ CORS allowed origin:', origin);
+      callback(null, true);
+    } else {
+      console.log('❌ CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies and credentials
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+};
+
+// Enable CORS with configuration
+app.use(cors(corsOptions));
 
 // Parse JSON request bodies (allows us to receive JSON data)
 app.use(express.json({ limit: '10mb' }));
