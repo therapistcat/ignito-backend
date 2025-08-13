@@ -1,73 +1,69 @@
 /**
- * Old Town Books - Enhanced Bookstore Theme
- * Vibrant vintage-inspired design with jewel tones and improved aesthetics
+ * Old Town Books - Modern Sophisticated Library Theme
+ * Contemporary, elegant design with refined typography and classy aesthetics
  */
 
-/* Import Google Fonts - Literary and classic typography */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+/* Import Modern Typography - Sophisticated and contemporary fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Enhanced Color Palette - Vibrant Bookstore Colors with Jewel Tones */
+/* Modern Sophisticated Library Color Palette */
 :root {
-  /* Primary Colors - Rich Browns and Warm Bases */
-  --primary-brown: #8B4513;
-  --dark-brown: #5D2F0A;
-  --rich-brown: #A0522D;
-  --light-brown: #D2B48C;
-  --cream: #F5F5DC;
-  --warm-white: #FFF8DC;
-  --parchment: #F0E68C;
+  /* Primary Colors - Contemporary Neutrals */
+  --primary-navy: #1a2332;
+  --deep-navy: #0f1419;
+  --slate-blue: #2c3e50;
+  --charcoal: #34495e;
+  --warm-gray: #7f8c8d;
+  --light-gray: #bdc3c7;
+  --pearl-white: #f8f9fa;
+  --pure-white: #ffffff;
 
-  /* Jewel Tone Accents - Vibrant and Rich */
-  --deep-emerald: #2E8B57;
-  --forest-green: #228B22;
-  --rich-burgundy: #800020;
-  --wine-red: #722F37;
-  --warm-amber: #FFBF00;
-  --golden-amber: #DAA520;
-  --antique-gold: #B8860B;
-  --copper: #B87333;
+  /* Sophisticated Accent Colors */
+  --elegant-teal: #16a085;
+  --deep-teal: #0d7377;
+  --refined-gold: #f39c12;
+  --amber-accent: #e67e22;
+  --burgundy-accent: #8e44ad;
+  --deep-purple: #6c5ce7;
+  --sage-green: #00b894;
+  --forest-accent: #00a085;
 
-  /* Enhanced Accent Colors */
-  --royal-purple: #663399;
-  --deep-teal: #008B8B;
-  --burnt-orange: #CC5500;
-  --mahogany: #C04000;
+  /* Modern Neutrals */
+  --soft-gray: #ecf0f1;
+  --medium-gray: #95a5a6;
+  --dark-gray: #2c3e50;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-muted: #95a5a6;
 
-  /* Neutral Colors - Improved Contrast */
-  --charcoal: #2F2F2F;
-  --slate-gray: #708090;
-  --warm-gray: #8B8680;
-  --light-gray: #D3D3D3;
-  --off-white: #FAF0E6;
-  --pearl: #F8F6F0;
+  /* Contemporary Status Colors */
+  --success: #00b894;
+  --warning: #fdcb6e;
+  --error: #e17055;
+  --info: #74b9ff;
 
-  /* Status Colors - Vibrant and Clear */
-  --success: #2E8B57;
-  --warning: #FF8C00;
-  --error: #DC143C;
-  --info: #4682B4;
+  /* Modern Shadow System */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-colored: 0 4px 14px 0 rgba(22, 160, 133, 0.15);
+  --shadow-accent: 0 4px 14px 0 rgba(243, 156, 18, 0.15);
 
-  /* Enhanced Shadows and Effects */
-  --shadow-light: 0 2px 12px rgba(47, 47, 47, 0.08);
-  --shadow-medium: 0 4px 20px rgba(47, 47, 47, 0.12);
-  --shadow-heavy: 0 8px 40px rgba(47, 47, 47, 0.16);
-  --shadow-colored: 0 4px 20px rgba(46, 139, 87, 0.15);
-  --shadow-warm: 0 4px 20px rgba(184, 115, 51, 0.15);
-  --text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-  --text-shadow-light: 0 1px 2px rgba(0, 0, 0, 0.1);
+  /* Contemporary Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Lora', 'Georgia', serif;
+  --font-display: 'Merriweather', 'Georgia', serif;
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Enhanced Typography */
-  --font-serif: 'Crimson Text', 'Times New Roman', serif;
-  --font-display: 'Libre Baskerville', 'Georgia', serif;
-  --font-decorative: 'Playfair Display', 'Georgia', serif;
-  --font-sans: 'Source Sans Pro', 'Arial', sans-serif;
-
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--rich-brown) 0%, var(--dark-brown) 100%);
-  --gradient-emerald: linear-gradient(135deg, var(--deep-emerald) 0%, var(--forest-green) 100%);
-  --gradient-burgundy: linear-gradient(135deg, var(--rich-burgundy) 0%, var(--wine-red) 100%);
-  --gradient-amber: linear-gradient(135deg, var(--warm-amber) 0%, var(--golden-amber) 100%);
-  --gradient-warm: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 50%, var(--pearl) 100%);
+  /* Modern Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-navy) 0%, var(--deep-navy) 100%);
+  --gradient-teal: linear-gradient(135deg, var(--elegant-teal) 0%, var(--deep-teal) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--refined-gold) 0%, var(--amber-accent) 100%);
+  --gradient-purple: linear-gradient(135deg, var(--burgundy-accent) 0%, var(--deep-purple) 100%);
+  --gradient-background: linear-gradient(135deg, var(--pearl-white) 0%, var(--soft-gray) 100%);
 }
 
 /* Reset and Base Styles */
@@ -79,15 +75,18 @@
 
 body {
   font-family: var(--font-sans);
-  background: var(--gradient-warm);
+  background: var(--gradient-background);
   background-attachment: fixed;
-  color: var(--charcoal);
-  line-height: 1.6;
+  color: var(--text-primary);
+  line-height: 1.7;
   min-height: 100vh;
   position: relative;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Enhanced paper texture overlay with subtle patterns */
+/* Modern subtle background pattern */
 body::before {
   content: '';
   position: fixed;
@@ -96,25 +95,11 @@ body::before {
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(circle at 2px 2px, rgba(46, 139, 87, 0.03) 1px, transparent 0),
-    radial-gradient(circle at 8px 8px, rgba(184, 115, 51, 0.02) 1px, transparent 0);
-  background-size: 24px 24px, 48px 48px;
+    radial-gradient(circle at 1px 1px, rgba(22, 160, 133, 0.02) 1px, transparent 0);
+  background-size: 32px 32px;
   pointer-events: none;
   z-index: -1;
-}
-
-/* Additional decorative overlay for depth */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(45deg, transparent 40%, rgba(218, 165, 32, 0.01) 50%, transparent 60%);
-  pointer-events: none;
-  z-index: -1;
+  opacity: 0.6;
 }
 
 /* Layout */
@@ -132,95 +117,95 @@ body::after {
 
 .main-content {
   flex: 1;
-  padding: 2rem;
+  padding: 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
-  background: rgba(248, 246, 240, 0.98);
-  backdrop-filter: blur(15px);
-  border-radius: 25px 25px 0 0;
-  box-shadow: var(--shadow-heavy);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px 24px 0 0;
+  box-shadow: var(--shadow-xl);
   min-height: calc(100vh - 80px);
-  border: 2px solid rgba(46, 139, 87, 0.1);
+  border: 1px solid rgba(22, 160, 133, 0.08);
   position: relative;
   overflow: hidden;
 }
 
-/* Add subtle inner glow to main content */
+/* Modern accent line */
 .main-content::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: var(--gradient-emerald);
-  opacity: 0.7;
+  height: 2px;
+  background: var(--gradient-teal);
+  opacity: 0.8;
 }
 
-/* Typography Enhancements */
+/* Modern Typography System */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: var(--dark-brown);
-  text-shadow: var(--text-shadow);
-  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
+  letter-spacing: -0.05em;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 600;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   font-weight: 600;
 }
 
-p {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: var(--charcoal);
-  margin-bottom: 1rem;
+h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
-/* Enhanced Navigation Bar - Vibrant Bookstore Theme */
+p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+/* Modern Sophisticated Navigation */
 .navbar {
-  background: var(--gradient-primary);
-  border-bottom: 4px solid var(--deep-emerald);
-  color: var(--warm-white);
-  padding: 1.25rem 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(22, 160, 133, 0.1);
+  color: var(--text-primary);
+  padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: var(--shadow-heavy);
-  position: relative;
-  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
 }
 
-/* Add decorative accent to navbar */
+/* Subtle accent line */
 .navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gradient-amber);
-}
-
-.navbar::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--golden-amber), transparent);
+  height: 2px;
+  background: var(--gradient-teal);
+  opacity: 0.6;
 }
 
 .nav-container {
@@ -234,20 +219,21 @@ p {
   z-index: 1;
 }
 
-/* Brand Styling */
+/* Modern Brand Styling */
 .nav-brand {
   font-family: var(--font-display);
-  color: var(--warm-white);
+  color: var(--text-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 1rem;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .nav-brand:hover {
-  transform: translateY(-2px);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+  color: var(--elegant-teal);
 }
 
 .brand-icon {
@@ -262,19 +248,19 @@ p {
 }
 
 .brand-main {
-  font-size: 1.9rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: var(--warm-amber);
-  font-family: var(--font-decorative);
-  text-shadow: var(--text-shadow);
+  color: var(--elegant-teal);
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
 .brand-sub {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--light-brown);
-  font-style: italic;
-  opacity: 0.9;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* Hamburger Menu */
@@ -318,18 +304,17 @@ p {
 }
 
 .nav-link {
-  color: var(--warm-white);
+  color: var(--text-secondary);
   text-decoration: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
   transition: all 0.3s ease;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
+  font-size: 0.95rem;
 }
 
 .nav-link::before {
@@ -349,11 +334,10 @@ p {
 
 .nav-link:hover,
 .nav-link.active {
-  background: rgba(46, 139, 87, 0.25);
-  border-color: var(--deep-emerald);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-colored);
-  color: var(--warm-amber);
+  background: rgba(22, 160, 133, 0.1);
+  color: var(--elegant-teal);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-link svg {
@@ -807,24 +791,24 @@ p {
   font-family: var(--font-sans);
 }
 
-/* Buttons - Bookstore Theme */
+/* Modern Button System */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 12px;
+  padding: 0.875rem 1.75rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-align: center;
   position: relative;
-  overflow: hidden;
   font-family: var(--font-sans);
-  box-shadow: var(--shadow-light);
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.025em;
 }
 
 .btn::before {
@@ -843,34 +827,33 @@ p {
 }
 
 .btn-primary {
-  background: var(--gradient-emerald);
-  color: var(--warm-white);
-  border: 2px solid var(--deep-emerald);
-  position: relative;
-  overflow: hidden;
+  background: var(--elegant-teal);
+  color: white;
+  border-color: var(--elegant-teal);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-colored);
-  background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-emerald) 100%);
-  border-color: var(--forest-green);
+  background: var(--deep-teal);
+  border-color: var(--deep-teal);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-primary:active {
-  transform: translateY(-1px);
+  transform: translateY(0);
 }
 
 .btn-secondary {
-  background: var(--gradient-burgundy);
-  color: var(--warm-white);
-  border: 2px solid var(--rich-burgundy);
+  background: var(--soft-gray);
+  color: var(--text-primary);
+  border-color: var(--light-gray);
 }
 
 .btn-secondary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 20px rgba(128, 0, 32, 0.3);
-  background: linear-gradient(135deg, var(--wine-red) 0%, var(--rich-burgundy) 100%);
+  background: var(--light-gray);
+  border-color: var(--medium-gray);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-info {
@@ -944,20 +927,19 @@ p {
   transform: none;
 }
 
-/* Enhanced Page Headers */
+/* Modern Page Headers */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
-  padding: 3rem;
-  background: var(--gradient-primary);
-  border-radius: 25px;
-  color: var(--warm-white);
+  padding: 3rem 3.5rem;
+  background: white;
+  border-radius: 16px;
+  color: var(--text-primary);
   position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-heavy);
-  border: 3px solid var(--deep-emerald);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(22, 160, 133, 0.1);
 }
 
 .page-header::before {
@@ -966,31 +948,20 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: var(--gradient-amber);
-  opacity: 0.9;
-}
-
-.page-header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="bookPattern" width="60" height="60" patternUnits="userSpaceOnUse"><rect width="60" height="60" fill="none"/><path d="M15,15 L45,15 L45,45 L15,45 Z" fill="none" stroke="rgba(255,191,0,0.08)" stroke-width="1.5"/><circle cx="30" cy="30" r="2" fill="rgba(46,139,87,0.06)"/></pattern></defs><rect width="100" height="100" fill="url(%23bookPattern)"/></svg>');
-  opacity: 0.4;
+  height: 3px;
+  background: var(--gradient-teal);
+  border-radius: 16px 16px 0 0;
 }
 
 .page-header h1 {
-  font-family: var(--font-decorative);
-  color: var(--warm-amber);
-  font-size: 2.8rem;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 2.5rem;
   font-weight: 700;
   position: relative;
   z-index: 1;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
 }
 
 .page-header .btn {
@@ -1011,20 +982,18 @@ p {
   font-family: var(--font-serif);
 }
 
-/* Enhanced Cards - Vibrant Bookstore Theme */
+/* Modern Card Design */
 .book-card,
 .author-card,
 .order-card,
 .stat-card {
-  background: var(--pearl);
-  border-radius: 20px;
-  box-shadow: var(--shadow-medium);
-  padding: 2.5rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
-  border: 2px solid var(--deep-emerald);
-  border-opacity: 0.2;
+  border: 1px solid rgba(22, 160, 133, 0.08);
 }
 
 .book-card::before,
@@ -1036,34 +1005,18 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 5px;
-  background: var(--gradient-emerald);
-  opacity: 0.8;
-}
-
-/* Add subtle inner shadow for depth */
-.book-card::after,
-.author-card::after,
-.order-card::after,
-.stat-card::after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--warm-amber), transparent);
-  opacity: 0.6;
+  height: 3px;
+  background: var(--gradient-teal);
+  border-radius: 12px 12px 0 0;
 }
 
 .book-card:hover,
 .author-card:hover,
 .order-card:hover,
 .stat-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: var(--shadow-heavy);
-  border-color: var(--deep-emerald);
-  background: var(--warm-white);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(22, 160, 133, 0.15);
 }
 
 /* Book Cards */
