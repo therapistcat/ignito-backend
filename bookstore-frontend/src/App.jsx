@@ -25,8 +25,8 @@ function App() {
 }
 
 function AppContent() {
-  const location = useLocation();
-  const isLoginPage = location.pathname === '/login';
+  const location = useLocation()
+  const isLoginPage = location.pathname === '/login'
 
   return (
     <div className="App">
@@ -36,52 +36,51 @@ function AppContent() {
 
         {/* Main Content Area */}
         <main className={`main-content ${isLoginPage ? 'login-main' : ''}`}>
-            <Routes>
-              {/* Authentication */}
-              <Route path="/login" element={<LoginPage />} />
+          <Routes>
+            {/* Authentication */}
+            <Route path="/login" element={<LoginPage />} />
 
-              {/* Dashboard - Home page */}
-              <Route path="/" element={<Dashboard />} />
+            {/* Dashboard - Home page */}
+            <Route path="/" element={<Dashboard />} />
 
-              {/* Books Management */}
-              <Route path="/books" element={<Books />} />
-              <Route path="/books/new" element={
-                <ProtectedRoute requireAdmin={true}>
-                  <BookForm />
-                </ProtectedRoute>
-              } />
-              <Route path="/books/edit/:id" element={
-                <ProtectedRoute requireAdmin={true}>
-                  <BookForm />
-                </ProtectedRoute>
-              } />
+            {/* Books Management */}
+            <Route path="/books" element={<Books />} />
+            <Route path="/books/new" element={
+              <ProtectedRoute requireAdmin={true}>
+                <BookForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/books/edit/:id" element={
+              <ProtectedRoute requireAdmin={true}>
+                <BookForm />
+              </ProtectedRoute>
+            } />
 
-              {/* Authors Management */}
-              <Route path="/authors" element={<Authors />} />
-              <Route path="/authors/new" element={
-                <ProtectedRoute requireAdmin={true}>
-                  <AuthorForm />
-                </ProtectedRoute>
-              } />
-              <Route path="/authors/edit/:id" element={
-                <ProtectedRoute requireAdmin={true}>
-                  <AuthorForm />
-                </ProtectedRoute>
-              } />
+            {/* Authors Management */}
+            <Route path="/authors" element={<Authors />} />
+            <Route path="/authors/new" element={
+              <ProtectedRoute requireAdmin={true}>
+                <AuthorForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/authors/edit/:id" element={
+              <ProtectedRoute requireAdmin={true}>
+                <AuthorForm />
+              </ProtectedRoute>
+            } />
 
-              {/* Orders Management */}
-              <Route path="/orders" element={<Orders />} />
+            {/* Orders Management */}
+            <Route path="/orders" element={<Orders />} />
 
-              {/* 404 Page */}
-              <Route path="*" element={
-                <div className="not-found">
-                  <h2>📚 Page Not Found</h2>
-                  <p>The page you're looking for doesn't exist.</p>
-                </div>
-              } />
-            </Routes>
-          </main>
-        </div>
+            {/* 404 Page */}
+            <Route path="*" element={
+              <div className="not-found">
+                <h2>📚 Page Not Found</h2>
+                <p>The page you're looking for doesn't exist.</p>
+              </div>
+            } />
+          </Routes>
+        </main>
       </div>
     </div>
   )
