@@ -4,7 +4,7 @@
  * Includes authentication context
  */
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import Navbar from './components/Navbar'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -14,18 +14,32 @@ import Authors from './pages/Authors'
 import Orders from './pages/Orders'
 import BookForm from './pages/BookForm'
 import AuthorForm from './pages/AuthorForm'
+import LoginPage from './pages/LoginPage'
 
 function App() {
   return (
     <AuthProvider>
-      <div className="App">
-        <div className="app-layout">
-          {/* Navigation Bar */}
-          <Navbar />
+      <AppContent />
+    </AuthProvider>
+  )
+}
 
-          {/* Main Content Area */}
-          <main className="main-content">
+function AppContent() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
+
+  return (
+    <div className="App">
+      <div className="app-layout">
+        {/* Navigation Bar - Hide on login page */}
+        {!isLoginPage && <Navbar />}
+
+        {/* Main Content Area */}
+        <main className={`main-content ${isLoginPage ? 'login-main' : ''}`}>
             <Routes>
+              {/* Authentication */}
+              <Route path="/login" element={<LoginPage />} />
+
               {/* Dashboard - Home page */}
               <Route path="/" element={<Dashboard />} />
 
@@ -69,7 +83,7 @@ function App() {
           </main>
         </div>
       </div>
-    </AuthProvider>
+    </div>
   )
 }
 

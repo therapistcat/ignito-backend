@@ -5,15 +5,14 @@
  * Includes authentication functionality
  */
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import Login from './Login';
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
   const { user, logout, isAdmin } = useAuth();
 
   // Helper function to check if current route is active
@@ -36,17 +35,13 @@ const Navbar = () => {
 
   // Handle login/logout
   const handleLogin = () => {
-    setShowLogin(true);
+    navigate('/login', { state: { from: location } });
     closeMenu();
   };
 
   const handleLogout = () => {
     logout();
     closeMenu();
-  };
-
-  const handleCloseLogin = () => {
-    setShowLogin(false);
   };
 
   return (
@@ -153,9 +148,6 @@ const Navbar = () => {
         {/* Mobile Menu Overlay */}
         {isMenuOpen && <div className="nav-overlay" onClick={closeMenu}></div>}
       </div>
-
-      {/* Login Modal */}
-      {showLogin && <Login onClose={handleCloseLogin} />}
     </nav>
   );
 };

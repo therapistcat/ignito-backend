@@ -4,38 +4,20 @@
  */
 
 import { useAuth } from '../contexts/AuthContext';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, requireAdmin = false }) => {
   const { user, isAdmin, canEdit } = useAuth();
+  const location = useLocation();
 
-  // If admin access is required but user is not admin
+  // If admin access is required but user is not admin, redirect to login
   if (requireAdmin && !isAdmin()) {
-    return (
-      <div className="access-denied">
-        <div className="access-denied-content">
-          <h2>Access Restricted</h2>
-          <p>This section requires administrator privileges.</p>
-          <p>Please log in as an admin to access this feature.</p>
-          <div className="access-info">
-            <h3>Current Access Level:</h3>
-            <p>{user ? `Logged in as: ${user.username} (${user.role})` : 'Guest User (Read-only access)'}</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // If edit access is required but user cannot edit
+  // If edit access is required but user cannot edit, redirect to login
   if (!canEdit() && requireAdmin) {
-    return (
-      <div className="access-denied">
-        <div className="access-denied-content">
-          <h2>Edit Access Required</h2>
-          <p>You need administrator privileges to edit content.</p>
-          <p>You can browse and view all content as a guest.</p>
-        </div>
-      </div>
-    );
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   // Allow access
