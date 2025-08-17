@@ -5,8 +5,11 @@
 
 import { useState, useEffect } from 'react';
 import { ordersAPI, handleAPIError } from '../services/api';
+import { useAuth } from '../contexts/AuthContext';
 
 const Orders = () => {
+  const { canEdit, isAdmin } = useAuth();
+
   // State management
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -60,8 +63,14 @@ const Orders = () => {
     setCurrentPage(1); // Reset to first page when filtering
   };
 
-  // Handle order status update
+  // Handle order status update - Admin only
   const handleStatusUpdate = async (orderId, newStatus) => {
+    // Security check: Only admins can update order status
+    if (!canEdit()) {
+      alert('Access denied. Only administrators can update order status.');
+      return;
+    }
+
     try {
       await ordersAPI.updateStatus(orderId, newStatus);
       // Refresh the orders list
@@ -74,8 +83,14 @@ const Orders = () => {
     }
   };
 
-  // Handle order deletion
+  // Handle order deletion - Admin only
   const handleDeleteOrder = async (orderId, customerName) => {
+    // Security check: Only admins can delete orders
+    if (!canEdit()) {
+      alert('Access denied. Only administrators can delete orders.');
+      return;
+    }
+
     if (!window.confirm(`Are you sure you want to delete the order for "${customerName}"?`)) {
       return;
     }
@@ -251,28 +266,38 @@ const Orders = () => {
                 </div>
 
                 <div className="order-actions">
-                  <div className="status-update">
-                    <label>Update Status:</label>
-                    <select
-                      value={order.status}
-                      onChange={(e) => handleStatusUpdate(order._id, e.target.value)}
-                      className="status-select"
-                    >
-                      {orderStatuses.map(status => (
-                        <option key={status} value={status}>
-                          {status.charAt(0).toUpperCase() + status.slice(1)}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  {canEdit() ? (
+                    <div className="status-update">
+                      <label>Update Status:</label>
+                      <select
+                        value={order.status}
+                        onChange={(e) => handleStatusUpdate(order._id, e.target.value)}
+                        className="status-select"
+                      >
+                        {orderStatuses.map(status => (
+                          <option key={status} value={status}>
+                            {status.charAt(0).toUpperCase() + status.slice(1)}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  ) : (
+                    <div className="status-display">
+                      <span className={`status-badge status-${order.status}`}>
+                        {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                      </span>
+                    </div>
+                  )}
 
-                  <button
-                    onClick={() => handleDeleteOrder(order._id, order.customerName)}
-                    className="btn btn-sm btn-danger"
-                    disabled={!['pending', 'cancelled'].includes(order.status)}
-                  >
-                    🗑️ Delete
-                  </button>
+                  {canEdit() && (
+                    <button
+                      onClick={() => handleDeleteOrder(order._id, order.customerName)}
+                      className="btn btn-sm btn-burgundy"
+                      disabled={!['pending', 'cancelled'].includes(order.status)}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               </div>
             ))}

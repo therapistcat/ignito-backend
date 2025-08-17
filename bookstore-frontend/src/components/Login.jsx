@@ -114,10 +114,8 @@ const Login = ({ onClose }) => {
         </form>
 
         <div className="login-info">
-          <p><strong>Demo Credentials:</strong></p>
-          <p>Username: Jivanshu</p>
-          <p>Password: Jivanshu123</p>
-          <p><small>Note: Guests can browse without logging in</small></p>
+          <p><small>Note: Guests can browse the library without logging in</small></p>
+          <p><small>Administrator access is required for content management</small></p>
         </div>
       </div>
     </div>

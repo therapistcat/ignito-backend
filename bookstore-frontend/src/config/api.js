@@ -37,7 +37,7 @@ export const ENVIRONMENT = environment;
 export default API_BASE_URL;
 
 // Log configuration for debugging
-console.log('🔧 API Configuration:');
+console.log('API Configuration:');
 console.log('  Environment:', environment);
 console.log('  Base URL:', API_BASE_URL);
 console.log('  Timeout:', API_TIMEOUT + 'ms');

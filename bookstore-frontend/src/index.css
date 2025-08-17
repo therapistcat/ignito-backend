@@ -1,11 +1,11 @@
 /**
- * Old Town Books - Bookstore Management System
- * Warm, vintage-inspired design with traditional bookstore aesthetics
+ * Modern Library Management System
+ * Contemporary, professional design with sophisticated jewel tones
  *
  * Student: University Student
  * Course: Web Development
- * Note: This CSS file imports the new bookstore theme
+ * Note: This CSS file imports the main bookstore theme
  */
 
-/* Import the new bookstore theme */
+/* Import the main bookstore theme */
 @import './styles/bookstore-theme.css';

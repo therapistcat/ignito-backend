@@ -14,7 +14,6 @@ import Authors from './pages/Authors'
 import Orders from './pages/Orders'
 import BookForm from './pages/BookForm'
 import AuthorForm from './pages/AuthorForm'
-import './App.css'
 
 function App() {
   return (

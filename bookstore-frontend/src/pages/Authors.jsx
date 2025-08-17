@@ -6,8 +6,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { authorsAPI, handleAPIError } from '../services/api';
+import { useAuth } from '../contexts/AuthContext';
 
 const Authors = () => {
+  const { canEdit, isAdmin } = useAuth();
+
   // State management
   const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,8 +61,14 @@ const Authors = () => {
     setCurrentPage(1); // Reset to first page when filtering
   };
 
-  // Handle author deletion
+  // Handle author deletion - Admin only
   const handleDeleteAuthor = async (authorId, authorName) => {
+    // Security check: Only admins can delete authors
+    if (!canEdit()) {
+      alert('Access denied. Only administrators can delete authors.');
+      return;
+    }
+
     if (!window.confirm(`Are you sure you want to delete "${authorName}"? This will fail if the author has books.`)) {
       return;
     }
@@ -99,10 +108,18 @@ const Authors = () => {
     <div className="authors-page">
       {/* Page Header */}
       <div className="page-header">
-        <h1>👨‍💼 Authors Management</h1>
-        <Link to="/authors/new" className="btn btn-primary">
-          ➕ Add New Author
-        </Link>
+        <h1>Authors Management</h1>
+        <p>{canEdit() ? 'Manage your author database' : 'Browse our author collection'}</p>
+        {canEdit() && (
+          <div className="btn-container-center">
+            <Link to="/authors/new" className="btn btn-emerald">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+              Add New Author
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Filter Controls */}
@@ -182,27 +199,40 @@ const Authors = () => {
                   )}
                 </div>
 
-                <div className="author-actions">
-                  <Link 
-                    to={`/authors/edit/${author._id}`} 
-                    className="btn btn-sm btn-secondary"
+                <div className="author-actions actions-center">
+                  {canEdit() && (
+                    <Link
+                      to={`/authors/edit/${author._id}`}
+                      className="btn btn-sm btn-amber"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                      </svg>
+                      Edit
+                    </Link>
+                  )}
+
+                  <Link
+                    to={`/books?author=${author._id}`}
+                    className="btn btn-sm btn-emerald"
                   >
-                    ✏️ Edit
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1z"/>
+                    </svg>
+                    View Books
                   </Link>
-                  
-                  <Link 
-                    to={`/books?author=${author._id}`} 
-                    className="btn btn-sm btn-info"
-                  >
-                    📚 View Books
-                  </Link>
-                  
-                  <button
-                    onClick={() => handleDeleteAuthor(author._id, author.name)}
-                    className="btn btn-sm btn-danger"
-                  >
-                    🗑️ Delete
-                  </button>
+
+                  {canEdit() && (
+                    <button
+                      onClick={() => handleDeleteAuthor(author._id, author.name)}
+                      className="btn btn-sm btn-burgundy"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                      </svg>
+                      Delete
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
