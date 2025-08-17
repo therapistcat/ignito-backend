@@ -82,7 +82,7 @@ app.use((req, res, next) => {
 // Welcome route - shows API information
 app.get('/', (req, res) => {
   res.json({
-    message: '📚 Welcome to Bookstore Management API',
+    message: 'Welcome to Bookstore Management API',
     version: '1.0.0',
     author: 'University Student',
     description: 'A RESTful API for managing books, authors, and orders',
@@ -165,26 +165,23 @@ app.use((error, req, res, next) => {
   });
 });
 
-/**
- * Start Server
- * Connect to database and start listening for requests
- */
+// Start Server - Connect to database and start listening for requests
 const startServer = async () => {
   try {
     // Connect to MongoDB database
     await connectDB();
-    
+
     // Start the server
     app.listen(PORT, () => {
-      console.log('🚀 ================================');
-      console.log(`📚 Bookstore API Server Started`);
-      console.log(`🌐 Server running on port ${PORT}`);
-      console.log(`📍 Local URL: http://localhost:${PORT}`);
-      console.log(`🏥 Health check: http://localhost:${PORT}/health`);
-      console.log('🚀 ================================');
+      console.log('================================');
+      console.log(`Bookstore API Server Started`);
+      console.log(`Server running on port ${PORT}`);
+      console.log(`Local URL: http://localhost:${PORT}`);
+      console.log(`Health check: http://localhost:${PORT}/health`);
+      console.log('================================');
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('Failed to start server:', error);
     process.exit(1);
   }
 };

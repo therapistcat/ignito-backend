@@ -2,14 +2,19 @@
  * Navigation Bar Component
  * Responsive navigation with hamburger menu for mobile devices
  * Enhanced bookstore-themed design with vibrant colors
+ * Includes authentication functionality
  */
 
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import Login from './Login';
 
 const Navbar = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const { user, logout, isAdmin } = useAuth();
 
   // Helper function to check if current route is active
   const isActive = (path) => {
@@ -29,14 +34,29 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  // Handle login/logout
+  const handleLogin = () => {
+    setShowLogin(true);
+    closeMenu();
+  };
+
+  const handleLogout = () => {
+    logout();
+    closeMenu();
+  };
+
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-container">
         {/* Logo/Brand */}
         <Link to="/" className="nav-brand" onClick={closeMenu}>
-          <span className="brand-icon">📚</span>
+          <span className="brand-icon">📖</span>
           <span className="brand-text">
-            <span className="brand-main">Old Town Books</span>
+            <span className="brand-main">Modern Library</span>
             <span className="brand-sub">Management System</span>
           </span>
         </Link>
@@ -98,11 +118,44 @@ const Navbar = () => {
             <span>Orders</span>
           </Link>
 
+          {/* Authentication Section */}
+          <div className="nav-auth">
+            {user ? (
+              <div className="user-section">
+                <span className="user-welcome">
+                  Welcome, {user.username} ({isAdmin() ? 'Admin' : 'User'})
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="nav-link logout-btn"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.59L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                  </svg>
+                  <span>Logout</span>
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={handleLogin}
+                className="nav-link login-btn"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/>
+                </svg>
+                <span>Admin Login</span>
+              </button>
+            )}
+          </div>
+
         </div>
 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && <div className="nav-overlay" onClick={closeMenu}></div>}
       </div>
+
+      {/* Login Modal */}
+      {showLogin && <Login onClose={handleCloseLogin} />}
     </nav>
   );
 };

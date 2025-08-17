@@ -6,7 +6,7 @@
 /* Import Modern Typography - Sophisticated and contemporary fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Modern Sophisticated Library Color Palette */
+/* Modern Sophisticated Library Color Palette with Enhanced Jewel Tones */
 :root {
   /* Primary Colors - Contemporary Neutrals */
   --primary-navy: #1a2332;
@@ -18,7 +18,18 @@
   --pearl-white: #f8f9fa;
   --pure-white: #ffffff;
 
-  /* Sophisticated Accent Colors */
+  /* Enhanced Jewel Tone Palette */
+  --emerald-primary: #50C878;
+  --emerald-deep: #2E8B57;
+  --emerald-light: #90EE90;
+  --burgundy-primary: #800020;
+  --burgundy-deep: #4A0E0E;
+  --burgundy-light: #B22222;
+  --amber-primary: #FFBF00;
+  --amber-deep: #FF8C00;
+  --amber-light: #FFD700;
+
+  /* Legacy colors for compatibility */
   --elegant-teal: #16a085;
   --deep-teal: #0d7377;
   --refined-gold: #f39c12;
@@ -58,7 +69,15 @@
   --font-display: 'Merriweather', 'Georgia', serif;
   --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Modern Gradients */
+  /* Enhanced Jewel Tone Gradients */
+  --gradient-emerald: linear-gradient(135deg, var(--emerald-primary) 0%, var(--emerald-deep) 100%);
+  --gradient-burgundy: linear-gradient(135deg, var(--burgundy-primary) 0%, var(--burgundy-deep) 100%);
+  --gradient-amber: linear-gradient(135deg, var(--amber-primary) 0%, var(--amber-deep) 100%);
+  --gradient-emerald-light: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald-primary) 100%);
+  --gradient-burgundy-light: linear-gradient(135deg, var(--burgundy-light) 0%, var(--burgundy-primary) 100%);
+  --gradient-amber-light: linear-gradient(135deg, var(--amber-light) 0%, var(--amber-primary) 100%);
+
+  /* Legacy gradients for compatibility */
   --gradient-primary: linear-gradient(135deg, var(--primary-navy) 0%, var(--deep-navy) 100%);
   --gradient-teal: linear-gradient(135deg, var(--elegant-teal) 0%, var(--deep-teal) 100%);
   --gradient-accent: linear-gradient(135deg, var(--refined-gold) 0%, var(--amber-accent) 100%);
@@ -131,16 +150,16 @@ body::before {
   overflow: hidden;
 }
 
-/* Modern accent line */
+/* Enhanced jewel tone accent line */
 .main-content::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--gradient-teal);
-  opacity: 0.8;
+  height: 3px;
+  background: var(--gradient-emerald);
+  opacity: 0.9;
 }
 
 /* Modern Typography System */
@@ -182,30 +201,30 @@ p {
   line-height: 1.7;
 }
 
-/* Modern Sophisticated Navigation */
+/* Optimized High-Performance Navigation with Jewel Tones */
 .navbar {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(22, 160, 133, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.96) 100%);
+  border-bottom: 1px solid rgba(80, 200, 120, 0.15);
   color: var(--text-primary);
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(80, 200, 120, 0.08);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  will-change: transform;
 }
 
-/* Subtle accent line */
+/* Enhanced jewel tone accent line */
 .navbar::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--gradient-teal);
-  opacity: 0.6;
+  height: 3px;
+  background: var(--gradient-emerald);
+  opacity: 0.8;
 }
 
 .nav-container {
@@ -317,6 +336,11 @@ p {
   font-size: 0.95rem;
 }
 
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
 .nav-link::before {
   content: '';
   position: absolute;
@@ -324,8 +348,9 @@ p {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(22, 160, 133, 0.2), transparent);
-  transition: left 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(80, 200, 120, 0.15), transparent);
+  transition: left 0.3s ease;
+  will-change: left;
 }
 
 .nav-link:hover::before {
@@ -334,10 +359,12 @@ p {
 
 .nav-link:hover,
 .nav-link.active {
-  background: rgba(22, 160, 133, 0.1);
-  color: var(--elegant-teal);
+  background: rgba(80, 200, 120, 0.1);
+  color: var(--emerald-deep);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(80, 200, 120, 0.15);
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
 .nav-link svg {
@@ -349,6 +376,53 @@ p {
 .nav-link span {
   font-family: var(--font-sans);
   font-weight: 500;
+}
+
+/* Authentication Section in Navbar */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(80, 200, 120, 0.2);
+}
+
+.user-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.user-welcome {
+  font-size: 0.85rem;
+  color: var(--emerald-deep);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.login-btn,
+.logout-btn {
+  background: var(--gradient-emerald);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+  background: var(--gradient-emerald-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(80, 200, 120, 0.3);
 }
 
 /* User Menu */
@@ -486,15 +560,15 @@ p {
     width: 280px;
     height: 100vh;
     background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     padding: 6rem 2rem 2rem;
-    transition: left 0.3s ease;
+    transition: left 0.25s ease;
     z-index: 1001;
-    box-shadow: var(--shadow-xl);
-    border-right: 2px solid var(--elegant-teal);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-right: 2px solid var(--emerald-primary);
+    will-change: left;
   }
   
   .nav-links.active {
@@ -826,16 +900,17 @@ p {
 }
 
 .btn-primary {
-  background: var(--elegant-teal);
+  background: var(--gradient-emerald);
   color: white;
-  border-color: var(--elegant-teal);
+  border-color: var(--emerald-primary);
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background: var(--deep-teal);
-  border-color: var(--deep-teal);
+  background: var(--gradient-emerald-light);
+  border-color: var(--emerald-deep);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 20px rgba(80, 200, 120, 0.3);
 }
 
 .btn-primary:active {
@@ -875,31 +950,45 @@ p {
   box-shadow: 0 4px 20px rgba(220, 20, 60, 0.4);
 }
 
-/* New Jewel Tone Button Variants */
+/* Enhanced Jewel Tone Button Variants */
 .btn-amber {
   background: var(--gradient-amber);
-  color: var(--dark-brown);
-  border: 2px solid var(--golden-amber);
+  color: var(--charcoal);
+  border: 2px solid var(--amber-primary);
   font-weight: 600;
 }
 
 .btn-amber:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-warm);
-  background: linear-gradient(135deg, var(--golden-amber) 0%, var(--antique-gold) 100%);
+  box-shadow: 0 6px 25px rgba(255, 191, 0, 0.4);
+  background: var(--gradient-amber-light);
   color: var(--charcoal);
 }
 
 .btn-emerald {
   background: var(--gradient-emerald);
-  color: var(--warm-white);
-  border: 2px solid var(--deep-emerald);
+  color: white;
+  border: 2px solid var(--emerald-primary);
+  font-weight: 600;
 }
 
 .btn-emerald:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-colored);
-  background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-emerald) 100%);
+  box-shadow: 0 6px 25px rgba(80, 200, 120, 0.4);
+  background: var(--gradient-emerald-light);
+}
+
+.btn-burgundy {
+  background: var(--gradient-burgundy);
+  color: white;
+  border: 2px solid var(--burgundy-primary);
+  font-weight: 600;
+}
+
+.btn-burgundy:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(128, 0, 32, 0.4);
+  background: var(--gradient-burgundy-light);
 }
 
 .btn-outline {
@@ -924,6 +1013,559 @@ p {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+}
+
+/* Button Centering and Layout Classes */
+.btn-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.btn-group-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.btn-container-center {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.btn-container-center .btn {
+  margin: 0.5rem;
+}
+
+.actions-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Login Modal Styles */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.login-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+  border: 2px solid var(--emerald-primary);
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--emerald-primary);
+}
+
+.login-header h2 {
+  color: var(--emerald-deep);
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: var(--soft-gray);
+  color: var(--burgundy-primary);
+}
+
+.login-form {
+  margin-bottom: 1.5rem;
+}
+
+.login-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.error-message {
+  background: rgba(128, 0, 32, 0.1);
+  color: var(--burgundy-deep);
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid var(--burgundy-primary);
+  text-align: center;
+}
+
+.login-info {
+  background: var(--gradient-emerald-light);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-info p {
+  margin: 0.25rem 0;
+  color: var(--emerald-deep);
+}
+
+.login-info strong {
+  color: var(--charcoal);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Access Denied Styles */
+.access-denied {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 2rem;
+}
+
+.access-denied-content {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--burgundy-primary);
+  max-width: 500px;
+}
+
+.access-denied-content h2 {
+  color: var(--burgundy-deep);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.access-denied-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.access-info {
+  background: var(--gradient-amber-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.access-info h3 {
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.access-info p {
+  color: var(--amber-deep);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Dashboard Enhancements */
+.user-info-header {
+  margin-top: 0.5rem;
+}
+
+.user-badge {
+  background: var(--gradient-emerald);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.dashboard-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(80, 200, 120, 0.1);
+}
+
+.dashboard-section h2,
+.dashboard-section h3 {
+  color: var(--emerald-deep);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--emerald-primary);
+  padding-bottom: 0.5rem;
+}
+
+/* Enhanced Table Styles */
+.stats-table-container,
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(80, 200, 120, 0.2);
+}
+
+.stats-table,
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.stats-table th,
+.data-table th {
+  background: var(--gradient-emerald);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 2px solid var(--emerald-deep);
+}
+
+.stats-table td,
+.data-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(80, 200, 120, 0.1);
+  vertical-align: middle;
+}
+
+.stats-row:hover,
+.data-table tbody tr:hover {
+  background: rgba(80, 200, 120, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.category-cell {
+  font-weight: 600;
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.category-info svg {
+  color: var(--emerald-primary);
+}
+
+.count-cell {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+}
+
+.status-cell {
+  text-align: center;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-active {
+  background: var(--gradient-emerald-light);
+  color: var(--emerald-deep);
+}
+
+.status-info {
+  background: var(--gradient-amber-light);
+  color: var(--amber-deep);
+}
+
+.status-warning {
+  background: var(--gradient-burgundy-light);
+  color: var(--burgundy-deep);
+}
+
+.status-pending {
+  background: rgba(255, 191, 0, 0.2);
+  color: var(--amber-deep);
+}
+
+/* Stock Badge */
+.stock-badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.low-stock {
+  background: var(--gradient-burgundy-light);
+  color: var(--burgundy-deep);
+}
+
+.normal-stock {
+  background: var(--gradient-emerald-light);
+  color: var(--emerald-deep);
+}
+
+/* Table Cell Specific Styles */
+.title-cell {
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.price-cell {
+  font-weight: 600;
+  color: var(--emerald-deep);
+}
+
+.order-id-cell {
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--amber-deep);
+}
+
+/* Recent Activity Grid */
+.recent-activity-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Warning and Info Row Highlights */
+.warning-row {
+  background: rgba(128, 0, 32, 0.02);
+}
+
+.info-row {
+  background: rgba(255, 191, 0, 0.02);
+}
+
+/* Enhanced Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Apply animations to dashboard elements */
+.dashboard-section {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.dashboard-section:nth-child(even) {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.dashboard-section:nth-child(odd) {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.stats-table tbody tr,
+.data-table tbody tr {
+  animation: slideInUp 0.4s ease-out;
+  animation-fill-mode: both;
+}
+
+.stats-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.stats-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.stats-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.stats-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.stats-table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+.data-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.data-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.data-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.data-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.data-table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+.user-badge {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.status-badge {
+  animation: scaleIn 0.4s ease-out;
+  transition: all 0.2s ease;
+}
+
+.status-badge:hover {
+  animation: pulse 1s infinite;
+}
+
+/* Button hover animations */
+.btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+  animation: none;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Navbar animations */
+.nav-link {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar {
+  animation: slideInUp 0.5s ease-out;
+}
+
+/* Page header animations */
+.page-header {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.header-icon svg {
+  animation: scaleIn 0.8s ease-out;
+  transition: transform 0.3s ease;
+}
+
+.header-icon:hover svg {
+  transform: rotate(5deg) scale(1.1);
+}
+
+/* Loading and error state animations */
+.loading,
+.error {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.loading h2,
+.error h2 {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive Design for Tables */
+@media (max-width: 768px) {
+  .recent-activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-table th,
+  .data-table th,
+  .stats-table td,
+  .data-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .actions-cell {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  /* Reduce animations on mobile for performance */
+  .dashboard-section,
+  .stats-table tbody tr,
+  .data-table tbody tr {
+    animation: none;
+  }
 }
 
 /* Modern Page Headers */

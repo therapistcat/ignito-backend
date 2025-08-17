@@ -176,13 +176,13 @@ const books = [
 
 // Create demo data
 async function createDemoData() {
-  console.log('📚 Creating demo data for Bookstore API...\n');
+  console.log('Creating demo data for Bookstore API...\n');
 
   try {
     const createdAuthors = [];
     
     // Create authors
-    console.log('👨‍💼 Creating authors...');
+    console.log('Creating authors...');
     for (let i = 0; i < authors.length; i++) {
       const author = authors[i];
       const response = await makeRequest({
@@ -195,20 +195,20 @@ async function createDemoData() {
 
       if (response.status === 201) {
         createdAuthors.push(response.data.data);
-        console.log(`✅ Created author: ${author.name}`);
+        console.log(`Created author: ${author.name}`);
       } else {
-        console.log(`❌ Failed to create author: ${author.name}`);
+        console.log(`Failed to create author: ${author.name}`);
       }
     }
 
     // Create books
-    console.log('\n📖 Creating books...');
+    console.log('\nCreating books...');
     const bookAuthorMapping = [0, 1, 2, 3, 4, 5, 0, 1]; // Maps books to author indices
-    
+
     for (let i = 0; i < books.length; i++) {
       const book = { ...books[i] };
       book.author = createdAuthors[bookAuthorMapping[i]]._id;
-      
+
       const response = await makeRequest({
         hostname: 'localhost',
         port: 3000,
@@ -218,9 +218,9 @@ async function createDemoData() {
       }, book);
 
       if (response.status === 201) {
-        console.log(`✅ Created book: ${book.title}`);
+        console.log(`Created book: ${book.title}`);
       } else {
-        console.log(`❌ Failed to create book: ${book.title}`);
+        console.log(`Failed to create book: ${book.title}`);
       }
     }
 
@@ -234,8 +234,8 @@ async function createDemoData() {
 
     if (booksResponse.status === 200 && booksResponse.data.data.length > 0) {
       // Create sample orders
-      console.log('\n🛒 Creating sample orders...');
-      
+      console.log('\nCreating sample orders...');
+
       const sampleOrders = [
         {
           customerName: 'Priya Sharma',
@@ -283,27 +283,27 @@ async function createDemoData() {
         }, order);
 
         if (response.status === 201) {
-          console.log(`✅ Created order for: ${order.customerName}`);
+          console.log(`Created order for: ${order.customerName}`);
         } else {
-          console.log(`❌ Failed to create order for: ${order.customerName}`);
+          console.log(`Failed to create order for: ${order.customerName}`);
         }
       }
     }
 
-    console.log('\n🎉 Demo data creation completed!');
-    console.log('\n📊 Summary:');
+    console.log('\nDemo data creation completed!');
+    console.log('\nSummary:');
     console.log(`   - Authors: ${authors.length}`);
     console.log(`   - Books: ${books.length}`);
     console.log(`   - Orders: 2`);
-    
-    console.log('\n🔗 Test the API:');
+
+    console.log('\nTest the API:');
     console.log('   - GET http://localhost:3000/api/authors');
     console.log('   - GET http://localhost:3000/api/books');
     console.log('   - GET http://localhost:3000/api/orders');
 
   } catch (error) {
-    console.error('❌ Failed to create demo data:', error.message);
-    console.log('\n💡 Make sure the server is running on port 3000');
+    console.error('Failed to create demo data:', error.message);
+    console.log('\nMake sure the server is running on port 3000');
   }
 }
 

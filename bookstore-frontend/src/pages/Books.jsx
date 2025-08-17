@@ -10,8 +10,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { booksAPI, handleAPIError } from '../services/api';
+import { useAuth } from '../contexts/AuthContext';
 
 const Books = () => {
+  const { canEdit, isAdmin } = useAuth();
+
   // State variables to store our data
   const [books, setBooks] = useState([]); // This will hold all our books
   const [loading, setLoading] = useState(true); // Shows loading spinner
@@ -198,14 +201,18 @@ const Books = () => {
       <div className="page-header">
         <div className="header-content">
           <h1>Books Management</h1>
-          <p>Manage your book inventory</p>
+          <p>{canEdit() ? 'Manage your book inventory' : 'Browse our book collection'}</p>
         </div>
-        <Link to="/books/new" className="btn btn-primary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-          </svg>
-          Add New Book
-        </Link>
+        {canEdit() && (
+          <div className="btn-container-center">
+            <Link to="/books/new" className="btn btn-emerald">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+              Add New Book
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Search and Filter Controls */}
@@ -240,9 +247,11 @@ const Books = () => {
         </div>
 
         {/* Debug button - student might add this for testing */}
-        <button onClick={testSearch} className="btn btn-secondary" style={{fontSize: '0.8rem'}}>
-          Debug Search
-        </button>
+        <div className="btn-container-center">
+          <button onClick={testSearch} className="btn btn-amber" style={{fontSize: '0.8rem'}}>
+            Debug Search
+          </button>
+        </div>
       </div>
 
       {/* Debug info - student might add this for testing */}
@@ -255,10 +264,12 @@ const Books = () => {
       {/* Error Display */}
       {error && (
         <div className="error">
-          <p>❌ {error}</p>
-          <button onClick={fetchBooks} className="btn btn-secondary">
-            🔄 Retry
-          </button>
+          <p>{error}</p>
+          <div className="btn-container-center">
+            <button onClick={fetchBooks} className="btn btn-burgundy">
+              Retry
+            </button>
+          </div>
         </div>
       )}
 
@@ -311,61 +322,63 @@ const Books = () => {
                   )}
                 </div>
 
-                <div className="book-actions">
-                  <Link
-                    to={`/books/edit/${book._id}`}
-                    className="btn btn-sm btn-secondary"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-                    </svg>
-                    Edit
-                  </Link>
+                {canEdit() && (
+                  <div className="book-actions actions-center">
+                    <Link
+                      to={`/books/edit/${book._id}`}
+                      className="btn btn-sm btn-amber"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                      </svg>
+                      Edit
+                    </Link>
 
-                  <button
-                    onClick={() => updateStock(book._id, book.stock)}
-                    className="btn btn-sm btn-info"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M20 6h-2c0-2.21-1.79-4-4-4S10 3.79 10 6H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/>
-                    </svg>
-                    Stock
-                  </button>
+                    <button
+                      onClick={() => updateStock(book._id, book.stock)}
+                      className="btn btn-sm btn-emerald"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 6h-2c0-2.21-1.79-4-4-4S10 3.79 10 6H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/>
+                      </svg>
+                      Stock
+                    </button>
 
-                  <button
-                    onClick={() => handleDeleteBook(book._id, book.title)}
-                    className="btn btn-sm btn-danger"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
-                    </svg>
-                    Delete
-                  </button>
-                </div>
+                    <button
+                      onClick={() => handleDeleteBook(book._id, book.title)}
+                      className="btn btn-sm btn-burgundy"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                      </svg>
+                      Delete
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
           {/* Pagination */}
           {pagination.totalPages > 1 && (
-            <div className="pagination">
+            <div className="pagination btn-group-center">
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={!pagination.hasPrevPage}
-                className="btn btn-secondary"
+                className="btn btn-amber"
               >
                 ← Previous
               </button>
-              
+
               <span className="page-info">
                 Page {pagination.currentPage} of {pagination.totalPages}
                 ({pagination.totalBooks} total books)
               </span>
-              
+
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={!pagination.hasNextPage}
-                className="btn btn-secondary"
+                className="btn btn-amber"
               >
                 Next →
               </button>
@@ -378,11 +391,15 @@ const Books = () => {
           {searchQuery || selectedGenre ? (
             <p>No books match your current search or filter criteria.</p>
           ) : (
-            <p>You haven't added any books yet.</p>
+            <p>{canEdit() ? "You haven't added any books yet." : "No books available at the moment."}</p>
           )}
-          <Link to="/books/new" className="btn btn-primary">
-            ➕ Add Your First Book
-          </Link>
+          {canEdit() && (
+            <div className="btn-container-center">
+              <Link to="/books/new" className="btn btn-emerald">
+                Add Your First Book
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </div>

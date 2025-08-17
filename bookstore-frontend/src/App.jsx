@@ -1,10 +1,13 @@
 /**
  * Main App Component
- * Handles routing and overall layout for the Old Town Books Management System
+ * Handles routing and overall layout for the Modern Library Management System
+ * Includes authentication context
  */
 
 import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext'
 import Navbar from './components/Navbar'
+import ProtectedRoute from './components/ProtectedRoute'
 import Dashboard from './pages/Dashboard'
 import Books from './pages/Books'
 import Authors from './pages/Authors'
@@ -15,41 +18,59 @@ import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <div className="app-layout">
-        {/* Navigation Bar */}
-        <Navbar />
+    <AuthProvider>
+      <div className="App">
+        <div className="app-layout">
+          {/* Navigation Bar */}
+          <Navbar />
 
-        {/* Main Content Area */}
-        <main className="main-content">
-          <Routes>
-            {/* Dashboard - Home page */}
-            <Route path="/" element={<Dashboard />} />
+          {/* Main Content Area */}
+          <main className="main-content">
+            <Routes>
+              {/* Dashboard - Home page */}
+              <Route path="/" element={<Dashboard />} />
 
-            {/* Books Management */}
-            <Route path="/books" element={<Books />} />
-            <Route path="/books/new" element={<BookForm />} />
-            <Route path="/books/edit/:id" element={<BookForm />} />
+              {/* Books Management */}
+              <Route path="/books" element={<Books />} />
+              <Route path="/books/new" element={
+                <ProtectedRoute requireAdmin={true}>
+                  <BookForm />
+                </ProtectedRoute>
+              } />
+              <Route path="/books/edit/:id" element={
+                <ProtectedRoute requireAdmin={true}>
+                  <BookForm />
+                </ProtectedRoute>
+              } />
 
-            {/* Authors Management */}
-            <Route path="/authors" element={<Authors />} />
-            <Route path="/authors/new" element={<AuthorForm />} />
-            <Route path="/authors/edit/:id" element={<AuthorForm />} />
+              {/* Authors Management */}
+              <Route path="/authors" element={<Authors />} />
+              <Route path="/authors/new" element={
+                <ProtectedRoute requireAdmin={true}>
+                  <AuthorForm />
+                </ProtectedRoute>
+              } />
+              <Route path="/authors/edit/:id" element={
+                <ProtectedRoute requireAdmin={true}>
+                  <AuthorForm />
+                </ProtectedRoute>
+              } />
 
-            {/* Orders Management */}
-            <Route path="/orders" element={<Orders />} />
+              {/* Orders Management */}
+              <Route path="/orders" element={<Orders />} />
 
-            {/* 404 Page */}
-            <Route path="*" element={
-              <div className="not-found">
-                <h2>📚 Page Not Found</h2>
-                <p>The page you're looking for doesn't exist.</p>
-              </div>
-            } />
-          </Routes>
-        </main>
+              {/* 404 Page */}
+              <Route path="*" element={
+                <div className="not-found">
+                  <h2>📚 Page Not Found</h2>
+                  <p>The page you're looking for doesn't exist.</p>
+                </div>
+              } />
+            </Routes>
+          </main>
+        </div>
       </div>
-    </div>
+    </AuthProvider>
   )
 }
 
